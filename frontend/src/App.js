@@ -11,7 +11,7 @@ export default function TodoApp() {
   const [newTodo, setNewTodo] = useState('');
   const [error, setError] = useState('');
 
-  const API_URL = 'http://localhost:3001/api';
+  const API_URL = 'http://20.118.56.2:3001/api';
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -275,3 +275,4 @@ export default function TodoApp() {
     </div>
   );
 }
+
