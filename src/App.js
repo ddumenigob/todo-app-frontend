@@ -20,6 +20,7 @@ export default function TodoApp() {
       setUser(JSON.parse(userData));
       fetchTodos(token);
     }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchTodos = async (token) => {
@@ -275,5 +276,6 @@ export default function TodoApp() {
     </div>
   );
 }
+
 
 
