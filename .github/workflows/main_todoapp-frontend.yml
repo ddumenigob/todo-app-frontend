@@ -27,13 +27,13 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-        working-directory: ./frontend
+          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: ./frontend
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,14 +47,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-          path: .          
       
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5D093FA3B46E4284AFA783967AD63FF2 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4FD443FDA8E04A57A699A3238052332B }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_88DBCC4356F04628AED929D2C71E1BA6 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AD7D735922DA44F0A2FA56470652A7A2 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1B9CCE4E284845B8870573414D4CA8C1 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A8FCF873BE21435683E56CE1C87E106C }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -63,8 +62,4 @@ jobs:
           app-name: 'todoapp-frontend'
           slot-name: 'Production'
           package: .
-
           
-
-
-
