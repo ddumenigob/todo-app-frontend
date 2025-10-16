@@ -11,7 +11,7 @@ export default function TodoApp() {
   const [newTodo, setNewTodo] = useState('');
   const [error, setError] = useState('');
 
-  const API_URL = 'http://localhost:3001/api';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
