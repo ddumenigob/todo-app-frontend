@@ -11,7 +11,7 @@ export default function TodoApp() {
   const [newTodo, setNewTodo] = useState('');
   const [error, setError] = useState('');
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+  const API_URL = process.env.REACT_APP_API_URL ||'http://localhost:3001/api';
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -20,7 +20,6 @@ export default function TodoApp() {
       setUser(JSON.parse(userData));
       fetchTodos(token);
     }
- // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchTodos = async (token) => {
